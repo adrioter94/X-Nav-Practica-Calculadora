@@ -8,3 +8,5 @@ Esta práctica consistirá en la creación de una calculadora que funcione como 
 ## Try Me
 
 [Try Me!](https://adrioter94.github.io/X-Nav-Practica-Calculadora/calculadora.html)
+
+Hay un bug cuando se meten los números con teclado...
