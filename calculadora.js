@@ -3,6 +3,7 @@ jQuery(document).ready(function(){
 
 	$(window).keypress(function(e) {
 		checkSyntax();
+		console.log("Hola");
 		var key = "";
 		var html = screen.html();
 		if(e.which == 13){
@@ -14,11 +15,12 @@ jQuery(document).ready(function(){
 				screen.html("Syntax ERROR");
 			}
 		}else if(e.which == 8){
+			e.preventDefault();
 			html = html.slice(0,-1);
 			screen.html(html);
 		}else{
 			if(checkLength()){
-				if (e.which == 48){
+				if (e.which == 48 || e.which == 96){
 					key = 0;
 				}else if(e.which == 49){
 					key = 1;
@@ -48,13 +50,17 @@ jQuery(document).ready(function(){
 					key = '/';
 				}else if(e.which == 46){
 					key = ".";
+				}else if(e.which == 40){
+					key = "(";
+				}else if(e.which == 41){
+					key = ")";
 				}
 				screen.html(html + key);
 			}
 		}
 	});
 
-	$(".num,.op").click(function(){
+	$(".val").click(function(){
 		checkSyntax();
 		if(checkLength()){
 			var html = screen.html();
@@ -82,35 +88,12 @@ jQuery(document).ready(function(){
 		var html = screen.html();
 		screen.html("");
 	});
-	
-	$(".plusmn").click(function(){
-		checkSyntax();
-		var html = screen.html();
-		sign = html.charAt(0);
-		if(sign == '-'){
-			html = html.substr(1);
-		}else{
-			html = "-" + html;
-		}
-		screen.html(html);
-	});
 
 	$(".erase").click(function(){
 		checkSyntax();
 		var html = screen.html();
 		html = html.slice(0,-1);
 		screen.html(html);
-	});
-	
-	$(".sqrt").click(function(){
-		checkSyntax();
-		var html = screen.html();
-		html = Math.sqrt(parseInt(html));
-		if(isNaN(html)){
-			screen.html("Math ERROR");
-		}else{
-			screen.html(html);
-		}
 	});
 
 	$(".equal").click(function(){
@@ -126,8 +109,7 @@ jQuery(document).ready(function(){
 	});
 
 	function checkSyntax(){
-		if(screen.html() == "Syntax ERROR" ||
-		   screen.html() == "Math ERROR"){
+		if(screen.html() == "Syntax ERROR"){
 			screen.html("");
 		}
 	}
@@ -139,4 +121,5 @@ jQuery(document).ready(function(){
 			return false;
 		}
 	}
+
 });

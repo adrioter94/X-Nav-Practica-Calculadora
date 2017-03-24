@@ -100,58 +100,8 @@
 	box-shadow: inset rgba(0,0,0,0.5) 0px 2px 8px;
 	background-image:-webkit-linear-gradient(top, #2f2f2f 0%, #363636 100%);
 	background-image:   -moz-linear-gradient(top, #2f2f2f 0%, #363636 100%);
-	background-image:		     linear-gradient(top, #2f2f2f 0%, #363636 100%);
+  background-image:		     linear-gradient(top, #2f2f2f 0%, #363636 100%);
 }
-
-a.equal{
-	color: black !important;
-	-webkit-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-	   -moz-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-			box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-	background-image:-webkit-linear-gradient(top, blue, red);
-	background-image:   -moz-linear-gradient(top, #F5F5F5, #C1C1C1);
-	background-image:        linear-gradient(top, blue, red);
-}
-
-a.other{
-	-webkit-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-	   -moz-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-			box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-	background-image:-webkit-linear-gradient(top, blue, red);
-	background-image:   -moz-linear-gradient(top, #707070, #505050);
-	background-image:        linear-gradient(top, blue, red);
-}
-
-a.other:active{
-	box-shadow: inset rgba(0,0,0,0.5) 0px 2px 8px;
-	background-image:-webkit-linear-gradient(top, #2f2f2f 0%, #363636 100%);
-	background-image:   -moz-linear-gradient(top, #505050 0%, #707070 100%);
-	background-image:		     linear-gradient(top, #2f2f2f 0%, #363636 100%);
-}
-
-a.equal:active{
-	box-shadow: inset rgba(0,0,0,0.5) 0px 2px 8px;
-	background-image:-webkit-linear-gradient(top, #2f2f2f 0%, #363636 100%);
-	background-image:   -moz-linear-gradient(top, #C1C1C1 0%, #F5F5F5 100%);
-	background-image:		     linear-gradient(top, #2f2f2f 0%, #363636 100%);
-}
-
-a.clear,a.erase{
-	-webkit-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-	   -moz-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-			box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
-	background-image:-webkit-linear-gradient(top, blue, red);
-	background-image:   -moz-linear-gradient(top, #E00000, #900000);
-	background-image:        linear-gradient(top, blue, red);
-}
-
-a.clear:active,a.erase:active{
-	box-shadow: inset rgba(0,0,0,0.5) 0px 2px 8px;
-	background-image:-webkit-linear-gradient(top, #2f2f2f 0%, #363636 100%);
-	background-image:   -moz-linear-gradient(top, #900000 0%, #E00000 100%);
-	background-image:		     linear-gradient(top, #2f2f2f 0%, #363636 100%);
-}
-
 
 .tall{
 	height:150px !important;
@@ -164,4 +114,3 @@ a.clear:active,a.erase:active{
 .shift{
 	margin-top:-80px;
 }
-
