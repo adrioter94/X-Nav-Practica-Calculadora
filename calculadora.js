@@ -1,26 +1,28 @@
 jQuery(document).ready(function(){
 	var screen = $(".screen")
+	var solved = false;
+	var ans = 0;
 
 	$(window).keypress(function(e) {
 		checkSyntax();
-		console.log("Hola");
 		var key = "";
 		var html = screen.html();
 		if(e.which == 13){
 			try {
-				var ans = eval(html);
+				e.preventDefault();
+				solved = true;
+				ans = eval(html);
 				screen.html(ans);
 			}
 			catch(err) {
 				screen.html("Syntax ERROR");
 			}
 		}else if(e.which == 8){
-			e.preventDefault();
 			html = html.slice(0,-1);
 			screen.html(html);
 		}else{
 			if(checkLength()){
-				if (e.which == 48 || e.which == 96){
+				if (e.which == 48){
 					key = 0;
 				}else if(e.which == 49){
 					key = 1;
@@ -47,6 +49,7 @@ jQuery(document).ready(function(){
 				}else if(e.which == 42){
 					key = '*';
 				}else if(e.which == 47){
+					e.preventDefault();
 					key = '/';
 				}else if(e.which == 46){
 					key = ".";
@@ -55,21 +58,55 @@ jQuery(document).ready(function(){
 				}else if(e.which == 41){
 					key = ")";
 				}
-				screen.html(html + key);
+
+				if(solved && Number.isInteger(key)){
+					screen.html(key);
+				}else{
+					screen.html(html + key);
+				}
+				solved = false;
 			}
 		}
 	});
 
-	$(".val").click(function(){
+	$(".num,.dot").click(function(){
 		checkSyntax();
+		if(solved){
+			solved = false;
+			screen.html($(this).html());
+		}else{
+			if(checkLength()){
+				var html = screen.html();
+				screen.html(html + $(this).html());
+			}
+		}
+	});
+
+	$(".op").click(function(){
+		checkSyntax();
+		solved = false;
 		if(checkLength()){
 			var html = screen.html();
 			screen.html(html + $(this).html());
 		}
 	});
 
+	$(".ans").click(function(){
+		checkSyntax();
+		if(solved){
+			solved = false;
+			screen.html(ans);
+		}else{
+			if(checkLength()){
+				var html = screen.html();
+				screen.html(html + ans);
+			}
+		}
+	});
+
 	$(".divide").click(function(){
 		checkSyntax();
+		solved = false;
 		if(checkLength()){
 			var html = screen.html();
 			screen.html(html + "/");
@@ -78,6 +115,7 @@ jQuery(document).ready(function(){
 
 	$(".mult").click(function(){
 		checkSyntax();
+		solved = false;
 		if(checkLength()){
 			var html = screen.html();
 			screen.html(html + "*");
@@ -85,22 +123,51 @@ jQuery(document).ready(function(){
 	});
 
 	$(".clear").click(function(){
+		solved = false;
 		var html = screen.html();
 		screen.html("");
 	});
 
+	$(".plusmn").click(function(){
+		checkSyntax();
+		solved = false;
+		var html = screen.html();
+		sign = html.charAt(0);
+		if(sign == '-'){
+			html = html.substr(1);
+		}else{
+			html = "-" + html;
+		}
+		screen.html(html);
+	});
+
 	$(".erase").click(function(){
 		checkSyntax();
+		solved = false;
 		var html = screen.html();
 		html = html.slice(0,-1);
 		screen.html(html);
 	});
 
+	$(".sqrt").click(function(){
+		checkSyntax();
+		solved = true;
+		var html = screen.html();
+		html = Math.sqrt(parseInt(html));
+		if(isNaN(html)){
+			screen.html("Math ERROR");
+		}else{
+			ans = html;
+			screen.html(html);
+		}
+	});
+
 	$(".equal").click(function(){
 		checkSyntax();
+		solved = true;
 		var html = screen.html();
 		try {
-			var ans = eval(html);
+			ans = eval(html);
 			screen.html(ans);
 		}
 		catch(err) {
@@ -109,7 +176,8 @@ jQuery(document).ready(function(){
 	});
 
 	function checkSyntax(){
-		if(screen.html() == "Syntax ERROR"){
+		if(screen.html() == "Syntax ERROR" ||
+		   screen.html() == "Math ERROR"){
 			screen.html("");
 		}
 	}
@@ -122,4 +190,11 @@ jQuery(document).ready(function(){
 		}
 	}
 
+	function checkSolved(){
+		if(solved){
+			return true;
+		}else{
+			return false;
+		}
+	}
 });
