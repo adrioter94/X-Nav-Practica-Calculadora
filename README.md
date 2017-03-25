@@ -9,5 +9,6 @@ Esta práctica consistirá en la creación de una calculadora que funcione como 
 
 [Try Me!](https://adrioter94.github.io/X-Nav-Practica-Calculadora/calculadora.html)
 
-Hay un bug cuando se meten los números con teclado...
-Ahora mismo (24-Marzo) me he equivocdo y he subido una version anterior....
+Versión final. (25-Marzo)
+
+Funcionalidad añadida: botón de ans, paréntesis, cambio de signo, SyntazERROR, MathERROR
